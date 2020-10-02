@@ -1,0 +1,36 @@
+﻿<Window x:Name="CD_Manager" x:Class="CdManager.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CdManager.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="640" MinHeight="136" MinWidth="144" Width="800" Loaded="MainWindow_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="0,10,0,20" Text="CD-Samlung" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <ListBox x:Name="lbxCds" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="{Binding ElementName=CD_Manager, Path=Width}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="70*"></ColumnDefinition>
+                            <ColumnDefinition Width="30*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:Name="tbAlbumTitle" Grid.Column="0" Text="{Binding Path=AlbumTitle}"/>
+                        <TextBlock x:Name="tbArtist" Grid.Column="1" Text="{Binding Path=Artist}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <UniformGrid Grid.Row="2" Rows="1" Columns="3" Margin="10,10,10,10">
+            <Button x:Name="btnNew" Content="Neu" Click="BtnNew_Clicked"/>
+            <Button x:Name="btnDel" Content="Löschen" Click="BtnDel_Clicked"/>
+            <Button x:Name="btnEdit" Content="Bearbeiten" Click="BtnEdit_Clicked"/>
+        </UniformGrid>
+    </Grid>
+</Window>
